@@ -8,20 +8,11 @@
 
 import UIKit
 
-@objc protocol SettingCellDelegate {
-	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool)
-}
 
 class SettingCell: UITableViewCell {
 
-	@IBOutlet var settingSwitch: UISwitch!
-
-	weak var delegate: SettingCellDelegate?
-	
     override func awakeFromNib() {
         super.awakeFromNib()
-        // this is similar to making an IBAction
-		settingSwitch.addTarget(self, action: #selector(switchValueChanged(filterSwitch:)), for: .valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,9 +20,5 @@ class SettingCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-	
-	func switchValueChanged(filterSwitch: UISwitch) {
-		delegate?.settingSwitchChanged(settingCell: self, switchIsOn: filterSwitch.isOn)
-	}
 
 }

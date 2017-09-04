@@ -8,11 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingCellDelegate {
-
-	@IBOutlet var tableView: UITableView!
+class ViewController: UIViewController {
 	
-	var settingFilters: [Int: Bool] = [Int: Bool]()
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -23,25 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		// Dispose of any resources that can be recreated.
 	}
 
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 20
-	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let settingCell = tableView.dequeueReusableCell(withIdentifier: "settingCell") as? SettingCell else {
-			return UITableViewCell()
-		}
-		
-		settingCell.delegate = self
-		settingCell.settingSwitch.isOn = settingFilters[indexPath.row] ?? false
-		
-		return settingCell
-	}
-	
-	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool) {
-				let indexPath = tableView.indexPath(for: settingCell)!
-				settingFilters[indexPath.row] = switchIsOn
-	}
 	
 }
 
