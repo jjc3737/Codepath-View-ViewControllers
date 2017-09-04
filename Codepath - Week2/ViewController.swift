@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingCellDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 	@IBOutlet var tableView: UITableView!
 	
@@ -32,15 +32,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			return UITableViewCell()
 		}
 		
-		settingCell.delegate = self
 		settingCell.settingSwitch.isOn = settingFilters[indexPath.row] ?? false
+		settingCell.label.text = String(indexPath.row)
+		
+		//set settingCell closure
+		settingCell.switchAction = { (isOn: Bool) in
+			// since this is within the context, we don't have to get the indexPath separately
+			self.settingFilters[indexPath.row] = isOn
+		}
 		
 		return settingCell
-	}
-	
-	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool) {
-				let indexPath = tableView.indexPath(for: settingCell)!
-				settingFilters[indexPath.row] = switchIsOn
 	}
 	
 }
