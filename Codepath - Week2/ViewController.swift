@@ -32,12 +32,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			return UITableViewCell()
 		}
 		
+		//set delegate to self
 		settingCell.delegate = self
 		settingCell.settingSwitch.isOn = settingFilters[indexPath.row] ?? false
 		
 		return settingCell
 	}
 	
+	//delegate functions
 	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool) {
 				let indexPath = tableView.indexPath(for: settingCell)!
 				settingFilters[indexPath.row] = switchIsOn

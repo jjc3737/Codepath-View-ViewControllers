@@ -8,7 +8,9 @@
 
 import UIKit
 
+//the @objc is needed here for the protocol to work
 @objc protocol SettingCellDelegate {
+	//defining delegate functions
 	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool)
 }
 
@@ -16,6 +18,7 @@ class SettingCell: UITableViewCell {
 
 	@IBOutlet var settingSwitch: UISwitch!
 
+	//why does this need to be weak?
 	weak var delegate: SettingCellDelegate?
 	
     override func awakeFromNib() {
@@ -31,6 +34,7 @@ class SettingCell: UITableViewCell {
     }
 	
 	func switchValueChanged(filterSwitch: UISwitch) {
+		// call the delegate function
 		delegate?.settingSwitchChanged(settingCell: self, switchIsOn: filterSwitch.isOn)
 	}
 
