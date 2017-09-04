@@ -8,15 +8,9 @@
 
 import UIKit
 
-@objc protocol SettingCellDelegate {
-	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool)
-}
-
 class SettingCell: UITableViewCell {
 
 	@IBOutlet var settingSwitch: UISwitch!
-
-	weak var delegate: SettingCellDelegate?
 	
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +25,7 @@ class SettingCell: UITableViewCell {
     }
 	
 	func switchValueChanged(filterSwitch: UISwitch) {
-		delegate?.settingSwitchChanged(settingCell: self, switchIsOn: filterSwitch.isOn)
+		print("Switch changed")
 	}
 
 }

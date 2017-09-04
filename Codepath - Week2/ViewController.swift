@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingCellDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 	@IBOutlet var tableView: UITableView!
 	
@@ -32,15 +32,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			return UITableViewCell()
 		}
 		
-		settingCell.delegate = self
 		settingCell.settingSwitch.isOn = settingFilters[indexPath.row] ?? false
 		
 		return settingCell
-	}
-	
-	func settingSwitchChanged(settingCell: SettingCell, switchIsOn: Bool) {
-				let indexPath = tableView.indexPath(for: settingCell)!
-				settingFilters[indexPath.row] = switchIsOn
 	}
 	
 }
