@@ -8,6 +8,7 @@
 
 import UIKit
 
+// #1: Declare the delegate protocol
 //the @objc is needed here for the protocol to work
 @objc protocol SettingCellDelegate {
 	//defining delegate functions
@@ -18,6 +19,7 @@ class SettingCell: UITableViewCell {
 
 	@IBOutlet var settingSwitch: UISwitch!
 
+	// #2: Create the delegate variable
 	//why does this need to be weak?
 	weak var delegate: SettingCellDelegate?
 	
@@ -34,7 +36,7 @@ class SettingCell: UITableViewCell {
     }
 	
 	func switchValueChanged(filterSwitch: UISwitch) {
-		// call the delegate function
+		// #3: Call the delegate function
 		delegate?.settingSwitchChanged(settingCell: self, switchIsOn: filterSwitch.isOn)
 	}
 

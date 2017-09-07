@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			return UITableViewCell()
 		}
 		
-		//set delegate to self
+		//#4: set setting cell delegate to self
 		settingCell.delegate = self
 		settingCell.settingSwitch.isOn = settingFilters[indexPath.row] ?? false
 		
