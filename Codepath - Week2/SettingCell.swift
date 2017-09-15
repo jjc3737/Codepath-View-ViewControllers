@@ -17,6 +17,7 @@ import UIKit
 
 class SettingCell: UITableViewCell {
 
+	@IBOutlet var settingTitle: UILabel!
 	@IBOutlet var settingSwitch: UISwitch!
 
 	// #2: Create the delegate variable
